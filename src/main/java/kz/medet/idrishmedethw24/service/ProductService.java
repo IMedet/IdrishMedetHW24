@@ -2,19 +2,18 @@ package kz.medet.idrishmedethw24.service;
 
 import kz.medet.idrishmedethw24.model.Product;
 import kz.medet.idrishmedethw24.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public Page<Product> getProductList(Pageable pageable, Integer minPrice, Integer maxPrice) {
         if(minPrice != null && maxPrice != null){
